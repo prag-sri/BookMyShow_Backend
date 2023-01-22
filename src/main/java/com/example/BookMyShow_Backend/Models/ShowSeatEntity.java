@@ -16,8 +16,8 @@ public class ShowSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Enumerated(value= EnumType.STRING)
     private String seatNo;
+    @Enumerated(value= EnumType.STRING)
     private SeatType seatType;
     private boolean booked;
     private Date bookedAt;

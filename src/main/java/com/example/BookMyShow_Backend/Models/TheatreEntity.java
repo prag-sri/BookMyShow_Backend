@@ -22,6 +22,6 @@ public class TheatreEntity {
     @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
     private List<TheatreSeatEntity> theatreSeats;
 
-    @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
-    private List<ShowEntity> shows;
+    @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
+    private List<ShowEntity> listOfShows;
 }

@@ -1,6 +1,8 @@
 package com.example.BookMyShow_Backend.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Table(name="movies")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class MovieEntity {
 
     @Id

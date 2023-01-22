@@ -1,7 +1,10 @@
 package com.example.BookMyShow_Backend.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,8 +13,12 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 @Data
 @Table(name= "shows")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ShowEntity {
 
     @Id
@@ -38,5 +45,5 @@ public class ShowEntity {
     private List<ShowSeatEntity> showSeats;
 
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
-    List<TicketEntity> ticket;
+    private List<TicketEntity> ticket;
 }
