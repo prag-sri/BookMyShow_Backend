@@ -1,6 +1,8 @@
 package com.example.BookMyShow_Backend.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,8 @@ import java.util.List;
 @Table(name="theatre")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class TheatreEntity {
 
     @Id
@@ -20,7 +24,7 @@ public class TheatreEntity {
     private String address;
 
     @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
-    private List<TheatreSeatEntity> theatreSeats;
+    private List<TheatreSeatEntity> theatreSeatsList;
 
     @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
     private List<ShowEntity> listOfShows;

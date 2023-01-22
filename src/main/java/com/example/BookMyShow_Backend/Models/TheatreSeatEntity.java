@@ -22,4 +22,15 @@ public class TheatreSeatEntity {
     @ManyToOne
     @JoinColumn
     private TheatreEntity theatre;
+
+    public TheatreSeatEntity(String seatNo, SeatType seatType, int rate) {
+        this.seatNo= seatNo;
+        this.seatType= seatType;
+        this.rate= rate;
+    }
 }
+
+//We are keeping structure of all the theatres same-> total seats= 10
+//5 Classic and 5 platinum
+//Classic-> 1A 1B 1C 1D 1E
+//Platinum-> 2A 2B 2C 2D 2E
