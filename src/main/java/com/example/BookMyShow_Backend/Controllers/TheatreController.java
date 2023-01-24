@@ -20,4 +20,8 @@ public class TheatreController {
     {
         return theatreService.addTheatre(theatreRequestDTO);
     }
+
+    //get theatre by id
+
+    //get all theatres
 }
