@@ -6,8 +6,6 @@ import com.example.BookMyShow_Backend.Models.TheatreSeatEntity;
 import com.example.BookMyShow_Backend.Repositories.TheatreRepository;
 import com.example.BookMyShow_Backend.Repositories.TheatreSeatRepository;
 import com.example.BookMyShow_Backend.RequestDTO.TheatreRequestDTO;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
