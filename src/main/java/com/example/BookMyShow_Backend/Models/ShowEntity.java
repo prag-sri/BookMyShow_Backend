@@ -32,6 +32,7 @@ public class ShowEntity {
     @UpdateTimestamp
     @Temporal(value=TemporalType.TIMESTAMP)
     private Date updatedOn;
+    private double multiplier;
 
     @ManyToOne
     @JoinColumn

@@ -28,6 +28,12 @@ public class TheatreSeatEntity {
         this.seatType= seatType;
         this.rate= rate;
     }
+
+    public int findRateBySeatNo(String seatNo)
+    {
+        return rate;
+    }
+
 }
 
 //We are keeping structure of all the theatres same-> total seats= 10

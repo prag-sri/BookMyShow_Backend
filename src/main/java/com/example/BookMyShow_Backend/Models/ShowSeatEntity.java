@@ -2,6 +2,8 @@ package com.example.BookMyShow_Backend.Models;
 
 import com.example.BookMyShow_Backend.Enums.SeatType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,8 @@ import java.util.Date;
 @Entity
 @Table(name="show_seats")
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class ShowSeatEntity {
 
