@@ -86,4 +86,28 @@ public class TicketService {
 
         return "Ticket booked successfully!";
     }
+
+    public String cancelTicket(int id) throws Exception
+    {
+        TicketEntity ticket= ticketRepository.findById(id).get();
+        if(ticket==null)
+            throw new Exception("Invalid Ticket Id!");
+
+        double amount= ticket.getAmount();
+        amount= amount-(0.2*amount);
+        String result= "Rs. "+amount+" refunded!";
+
+        List<ShowSeatEntity> showSeats= ticket.getShowSeats();
+        for(ShowSeatEntity showSeat: showSeats)
+        {
+            showSeat.setBooked(false);
+            showSeat.setBookedAt(null);
+            showSeat.setTicket(null);
+        }
+        ticketRepository.delete(ticket);
+
+        return result;
+    }
+
+
 }

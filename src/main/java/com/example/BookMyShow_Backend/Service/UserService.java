@@ -1,7 +1,9 @@
 package com.example.BookMyShow_Backend.Service;
 
+import com.example.BookMyShow_Backend.Models.TicketEntity;
 import com.example.BookMyShow_Backend.Models.UserEntity;
 import com.example.BookMyShow_Backend.Repositories.UserRepository;
+import com.example.BookMyShow_Backend.RequestDTO.TicketResponseDTO;
 import com.example.BookMyShow_Backend.RequestDTO.UserRequestDTO;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +50,18 @@ public class UserService {
             listOfUsers.add(user);
         }
         return listOfUsers;
+    }
+
+    public List<TicketResponseDTO> getAllTickets(Integer id)
+    {
+        UserEntity user= userRepository.findById(id).get();
+        List<TicketEntity> usersTickets= user.getTicket();
+        List<TicketResponseDTO> ticketsInfo= new ArrayList<>();
+        for(TicketEntity ticket: usersTickets)
+        {
+            TicketResponseDTO t= new TicketResponseDTO(ticket);
+            ticketsInfo.add(t);
+        }
+        return ticketsInfo;
     }
 }

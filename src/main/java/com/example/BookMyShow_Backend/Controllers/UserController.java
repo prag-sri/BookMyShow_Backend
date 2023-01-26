@@ -1,6 +1,8 @@
 package com.example.BookMyShow_Backend.Controllers;
 
+import com.example.BookMyShow_Backend.Models.TicketEntity;
 import com.example.BookMyShow_Backend.Models.UserEntity;
+import com.example.BookMyShow_Backend.RequestDTO.TicketResponseDTO;
 import com.example.BookMyShow_Backend.RequestDTO.UserRequestDTO;
 import com.example.BookMyShow_Backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,21 @@ public class UserController {
         return result;
     }
 
-    @GetMapping("find_user_by_name")
+    @GetMapping("/find_user_by_name")
     public UserEntity findByName(@RequestParam("name") String name)
     {
         return userService.findByName(name);
     }
 
-    @GetMapping("find_all_users")
+    @GetMapping("/find_all_users")
     public List<UserEntity> findAll()
     {
         return userService.findAll();
+    }
+
+    @GetMapping("/get_tickets")
+    public List<TicketResponseDTO> getAllTickets(@RequestParam("id") Integer id)
+    {
+        return userService.getAllTickets(id);
     }
 }

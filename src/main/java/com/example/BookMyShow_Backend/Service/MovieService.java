@@ -1,10 +1,17 @@
 package com.example.BookMyShow_Backend.Service;
 
 import com.example.BookMyShow_Backend.Models.MovieEntity;
+import com.example.BookMyShow_Backend.Models.ShowEntity;
+import com.example.BookMyShow_Backend.Models.TheatreEntity;
 import com.example.BookMyShow_Backend.Repositories.MovieRepository;
 import com.example.BookMyShow_Backend.RequestDTO.MovieRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -34,5 +41,40 @@ public class MovieService {
                 return movie;
         }
         return null;
+    }
+
+    public List<ShowEntity> getAllShows(Integer movieId, LocalDate fromDt, LocalDate toDt)
+    {
+        List<ShowEntity> resultShowList= new ArrayList<>();
+        MovieEntity movie= movieRepository.findById(movieId).get();
+        List<ShowEntity> showList= movie.getShows();
+        for(ShowEntity show: showList)
+        {
+            LocalDate showDt= show.getShowDt();
+            if(fromDt.isEqual(showDt))
+                resultShowList.add(show);
+            else if(toDt.isEqual(showDt))
+                resultShowList.add(show);
+            else if(fromDt.isBefore(showDt) && toDt.isAfter(showDt))
+                resultShowList.add(show);
+        }
+        return resultShowList;
+    }
+
+    public List<TheatreEntity> getAllTheatres(Integer id)
+    {
+        MovieEntity movie= movieRepository.findById(id).get();
+
+        List<TheatreEntity> theatreList= new ArrayList<>();
+
+        List<ShowEntity> showsList= movie.getShows();
+        for(ShowEntity show: showsList)
+        {
+            TheatreEntity theatre= show.getTheatre();
+            if(theatreList.size()==0 || !theatreList.contains(theatre))
+                theatreList.add(theatre);
+        }
+
+        return theatreList;
     }
 }
