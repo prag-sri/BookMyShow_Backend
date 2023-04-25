@@ -1,10 +1,9 @@
 package com.example.BookMyShow_Backend.Controllers;
 
-import com.example.BookMyShow_Backend.Models.TicketEntity;
 import com.example.BookMyShow_Backend.Models.UserEntity;
-import com.example.BookMyShow_Backend.RequestDTO.TicketResponseDTO;
-import com.example.BookMyShow_Backend.RequestDTO.UserRequestDTO;
-import com.example.BookMyShow_Backend.Service.UserService;
+import com.example.BookMyShow_Backend.DTOs.TicketResponseDTO;
+import com.example.BookMyShow_Backend.DTOs.UserRequestDTO;
+import com.example.BookMyShow_Backend.Service.Implementation.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,30 +14,30 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userServiceImpl;
 
     @PostMapping("/add_user")
     public String addUser(@RequestBody UserRequestDTO userRequestDTO)
     {
-        String result= userService.addUser(userRequestDTO);
+        String result= userServiceImpl.addUser(userRequestDTO);
         return result;
     }
 
     @GetMapping("/find_user_by_name")
     public UserEntity findByName(@RequestParam("name") String name)
     {
-        return userService.findByName(name);
+        return userServiceImpl.findByName(name);
     }
 
     @GetMapping("/find_all_users")
     public List<UserEntity> findAll()
     {
-        return userService.findAll();
+        return userServiceImpl.findAll();
     }
 
     @GetMapping("/get_tickets")
     public List<TicketResponseDTO> getAllTickets(@RequestParam("id") Integer id)
     {
-        return userService.getAllTickets(id);
+        return userServiceImpl.getAllTickets(id);
     }
 }

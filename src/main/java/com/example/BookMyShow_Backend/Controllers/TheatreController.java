@@ -1,27 +1,32 @@
 package com.example.BookMyShow_Backend.Controllers;
 
-import com.example.BookMyShow_Backend.RequestDTO.TheatreRequestDTO;
-import com.example.BookMyShow_Backend.Service.TheatreService;
+import com.example.BookMyShow_Backend.DTOs.TheatreRequestDTO;
+import com.example.BookMyShow_Backend.DTOs.TheatreResponseDTO;
+import com.example.BookMyShow_Backend.Service.Implementation.TheatreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/theatre")
 public class TheatreController {
 
     @Autowired
-    TheatreService theatreService;
+    TheatreServiceImpl theatreServiceImpl;
 
     @PostMapping("/add_theatre")
-    public String addTheatre(@RequestBody TheatreRequestDTO theatreRequestDTO)
-    {
-        return theatreService.addTheatre(theatreRequestDTO);
+    public String addTheatre(@RequestBody TheatreRequestDTO theatreRequestDTO){
+        return theatreServiceImpl.addTheatre(theatreRequestDTO);
     }
 
-    //get theatre by id
+    @GetMapping("/findById/{id}")
+    public TheatreResponseDTO findById(@PathVariable("id")Integer id){
+        return theatreServiceImpl.findById(id);
+    }
 
-    //get all theatres
+    @GetMapping("/get_all")
+    public List<TheatreResponseDTO> getTheatresList(){
+        return theatreServiceImpl.getTheatresList();
+    }
 }

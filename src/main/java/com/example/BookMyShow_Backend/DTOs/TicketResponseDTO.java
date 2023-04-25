@@ -1,13 +1,19 @@
-package com.example.BookMyShow_Backend.RequestDTO;
+package com.example.BookMyShow_Backend.DTOs;
 
 import com.example.BookMyShow_Backend.Models.TicketEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TicketResponseDTO {
 
     private int id;
